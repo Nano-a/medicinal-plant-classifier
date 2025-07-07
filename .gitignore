@@ -1,0 +1,32 @@
+# Fichiers/dossiers Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environnements virtuels
+venv/
+.env
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossiers d'IDE
+.vscode/
+.idea/
+
+# Données temporaires ou volumineuses
+*.sqlite3
+*.db
+.ipynb_checkpoints/
+
+# Fichiers de configuration secrets (si besoin)
+.env.*
+
+# Fichiers de l'installateur Miniconda
+Miniconda3-latest-Linux-x86_64.sh
+
+# Visualisations générées (optionnel, si volumineux)
+static/visualizations/
+visualizations/*.png 

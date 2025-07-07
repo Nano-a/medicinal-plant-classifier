@@ -1,0 +1,259 @@
+### Projet choisi : Classification des plantes médicinales
+
+#### Pourquoi ce projet ?
+- **Pertinence pour l’IA** : La classification est une tâche fondamentale en machine learning, parfaite pour un master en IA.
+- **Résultat visuel** : Une interface Flask pour entrer les caractéristiques d’une plante, et des graphiques pour analyser les données.
+- **Accessibilité** : Utilise des outils que tu connais (Python, Flask, Scikit-learn) et un dataset simple.
+
+#### Résultat attendu
+- Une application Flask où l’utilisateur entre les caractéristiques d’une plante (ex. : type de feuille, habitat) et obtient une prédiction : “Médicinale” ou “Non médicinale”.
+- Des graphiques (ex. : distribution des classes, matrice de confusion).
+- Un dépôt GitHub avec un `README.md`, un `devbook.md` (suivi des étapes), et une démo (vidéo).
+
+---
+
+### Étape 1 : Créer un nouveau dossier pour le projet
+
+Commençons par organiser ton espace de travail.
+
+- **Étapes** :
+  1. **Crée un dossier pour le nouveau projet** :
+     - Ouvre ton terminal Ubuntu (`Ctrl + Alt + T`).
+     - Navigue vers ton répertoire de projets :
+       ```bash
+       cd ~/L2/Projet/Personnel/IA
+       ```
+     - Crée un dossier nommé `medicinal-plant-classifier` :
+       ```bash
+       mkdir medicinal-plant-classifier
+       cd medicinal-plant-classifier
+       ```
+  2. **Initialise un dépôt Git** :
+     - Tape :
+       ```bash
+       git init
+       ```
+     - Crée un fichier `README.md` initial :
+       ```bash
+       echo "# Medicinal Plant Classifier" > README.md
+       echo "## Description" >> README.md
+       echo "Une application de classification pour prédire si une plante est médicinale ou non, utilisant le machine learning." >> README.md
+       git add README.md
+       git commit -m "Initialisation du projet"
+       ```
+  3. **Crée un fichier `devbook.md` pour suivre les étapes** :
+     - Tape :
+       ```bash
+       echo "# DevBook - Suivi du projet Medicinal Plant Classifier" > devbook.md
+       echo "## Étapes du développement" >> devbook.md
+       echo "- [ ] Créer l’arborescence initiale du projet" >> devbook.md
+       echo "- [ ] Télécharger et préparer le dataset" >> devbook.md
+       echo "- [ ] Générer le projet avec Cursor IDE AI" >> devbook.md
+       echo "- [ ] Installer les dépendances et tester l’application" >> devbook.md
+       echo "- [ ] Personnaliser l’interface Flask" >> devbook.md
+       echo "- [ ] Ajouter des visualisations" >> devbook.md
+       echo "- [ ] Créer une démo vidéo" >> devbook.md
+       echo "- [ ] Rédiger un rapport PDF et finaliser" >> devbook.md
+       git add devbook.md
+       git commit -m "Ajout du devbook pour le suivi des étapes"
+       ```
+  4. **Crée une arborescence initiale** :
+     - Tape :
+       ```bash
+       mkdir model view controller visualizations data
+       touch requirements.txt
+       touch app.py
+       ```
+     - Résultat :
+       ```
+       medicinal-plant-classifier/
+       ├── app.py
+       ├── requirements.txt
+       ├── model/
+       ├── view/
+       ├── controller/
+       ├── visualizations/
+       ├── data/
+       ├── README.md
+       ├── devbook.md
+       ```
+
+- **Suivi dans `devbook.md`** :
+  - Modifie `devbook.md` pour marquer cette étape comme réalisée :
+    ```bash
+    sed -i 's/- \[ \] Créer l’arborescence initiale du projet/- \[x\] Créer l’arborescence initiale du projet/' devbook.md
+    git add devbook.md
+    git commit -m "Étape 1 réalisée : Création de l’arborescence initiale"
+    ```
+
+
+---
+
+### Étape 2 : Télécharger et préparer le dataset
+
+Nous allons utiliser un dataset simple de classification des plantes médicinales. Un bon choix est le **Medicinal Plants Dataset** (par exemple, inspiré de Kaggle ou UCI). Si tu ne trouves pas un dataset exact, tu peux utiliser un dataset fictif que je te fournirai.
+
+- **Étapes** :
+  1. **Recherche un dataset** :
+     - Va sur Kaggle et cherche “Medicinal Plants Dataset” (ex. : https://www.kaggle.com/datasets).
+     - Si tu ne trouves pas, utilise un dataset fictif que je vais te fournir (voir ci-dessous).
+  2. **Dataset fictif (si nécessaire)** :
+     - Crée un fichier `data/plants.csv` avec ce contenu :
+
+```csv
+leaf_type,habitat,flower_color,height,medicinal
+simple,forest,white,30,yes
+compound,desert,red,50,no
+simple,forest,blue,20,yes
+compound,mountain,yellow,40,no
+simple,desert,white,25,yes
+```
+
+     - Enregistre-le dans `data/` :
+       ```bash
+       mkdir -p ~/L2/Projet/Personnel/IA/medicinal-plant-classifier/data
+       mv plants.csv ~/L2/Projet/Personnel/IA/medicinal-plant-classifier/data/
+       ```
+  3. **Vérifie le contenu** :
+     - Tape :
+       ```bash
+       head ~/L2/Projet/Personnel/IA/medicinal-plant-classifier/data/plants.csv
+       ```
+     - Attendu : `leaf_type,habitat,flower_color,height,medicinal`.
+
+- **Suivi dans `devbook.md`** :
+  - Modifie `devbook.md` :
+    ```bash
+    sed -i 's/- \[ \] Télécharger et préparer le dataset/- \[x\] Télécharger et préparer le dataset/' devbook.md
+    git add devbook.md
+    git commit -m "Étape 2 réalisée : Téléchargement et préparation du dataset"
+    ```
+
+
+
+### Étape 3 : Générer le projet avec Cursor IDE AI
+
+Cursor IDE AI est un outil qui peut générer un projet complet à partir d’un prompt. Voici un prompt adapté pour ton projet.
+
+#### Prompt pour Cursor IDE AI
+Copie ce prompt et utilise-le dans Cursor IDE AI :
+
+> Créez un projet Python nommé "Medicinal Plant Classifier".  
+> Objectif : Une application Flask qui prédit si une plante est médicinale ou non, en fonction de ses caractéristiques (ex. : type de feuille, habitat), utilisant le machine learning.  
+> Exigences :  
+> - Utilisez un dataset CSV (`data/plants.csv`) avec des colonnes : `leaf_type,habitat,flower_color,height,medicinal`.  
+> - Structure : `model/` (logique de classification), `view/` (templates Flask), `controller/` (routes Flask), `visualizations/` (graphiques), `data/` (dataset).  
+> - Fonctionnalités :  
+>   1. Prétraitement : Encodage des variables catégoriques (ex. : `leaf_type`, `habitat`) avec Scikit-learn.  
+>   2. Modèle : Classification binaire (médicinale/non médicinale) avec régression logistique (Scikit-learn).  
+>   3. Interface : Formulaire Flask (`view/index.html`) pour entrer les caractéristiques d’une plante, page de résultats (`view/results.html`) pour afficher “Médicinale” ou “Non médicinale”.  
+>   4. Visualisations : Graphique de distribution des classes et matrice de confusion (Matplotlib), sauvegardés dans `visualizations/`.  
+> - Outils : Python, Flask, Pandas, Scikit-learn, Matplotlib.  
+> - Créez un `requirements.txt` avec les dépendances.  
+> - Instructions : Guide d’installation et d’utilisation dans `README.md`.  
+> - Ajoutez un fichier `devbook.md` à la racine avec les étapes suivantes :  
+>   - Créer l’arborescence initiale du projet  
+>   - Télécharger et préparer le dataset  
+>   - Générer le projet avec Cursor IDE AI  
+>   - Installer les dépendances et tester l’application  
+>   - Personnaliser l’interface Flask  
+>   - Ajouter des visualisations  
+>   - Créer une démo vidéo  
+>   - Rédiger un rapport PDF et finaliser  
+> - Code simple et commenté, adapté à un étudiant en L2 Informatique avec bases en Python.
+
+#### Étapes pour Cursor IDE AI
+1. **Accède à Cursor IDE AI** :
+   - Ouvre ton navigateur et va sur le site de Cursor IDE AI (cherche “Cursor IDE AI” si tu n’as pas l’URL exacte).
+2. **Entre le prompt** :
+   - Copie-colle le prompt ci-dessus dans l’interface de Cursor IDE AI.
+   - Lance la génération (souvent un bouton comme “Generate” ou “Create”).
+3. **Télécharge le projet généré** :
+   - Cursor IDE AI devrait te fournir un ZIP ou un dossier avec le projet complet.
+   - Déplace-le dans `~/L2/Projet/Personnel/IA/medicinal-plant-classifier/` :
+     - Si c’est un ZIP, décompresse-le :
+       ```bash
+       unzip medicinal-plant-classifier.zip -d ~/L2/Projet/Personnel/IA/medicinal-plant-classifier
+       ```
+     - Si les fichiers sont directement dans un dossier, copie-les :
+       ```bash
+       cp -r /chemin/vers/medicinal-plant-classifier/* ~/L2/Projet/Personnel/IA/medicinal-plant-classifier/
+       ```
+4. **Vérifie l’arborescence** :
+   - Assure-toi que tous les dossiers et fichiers sont présents, y compris `devbook.md` :
+     ```
+     medicinal-plant-classifier/
+     ├── app.py
+     ├── requirements.txt
+     ├── model/
+     │   └── plant_classifier.py
+     ├── view/
+     │   ├── index.html
+     │   └── results.html
+     ├── controller/
+     │   └── routes.py
+     ├── visualizations/
+     │   ├── class_distribution.png
+     │   └── confusion_matrix.png
+     ├── data/
+     │   └── plants.csv
+     ├── README.md
+     ├── devbook.md
+     ```
+
+- **Suivi dans `devbook.md`** :
+  - Modifie `devbook.md` pour marquer cette étape comme réalisée :
+    ```bash
+    sed -i 's/- \[ \] Générer le projet avec Cursor IDE AI/- \[x\] Générer le projet avec Cursor IDE AI/' devbook.md
+    git add devbook.md
+    git commit -m "Étape 3 réalisée : Génération du projet avec Cursor IDE AI"
+    ```
+
+
+---
+
+### Étape 4 : Installer les dépendances et tester
+
+Le projet généré par Cursor IDE AI devrait inclure un `requirements.txt`. Installons les dépendances pour tester l’application.
+
+- **Étapes** :
+  1. **Crée un environnement virtuel** :
+     - Navigue vers ton projet :
+       ```bash
+       cd ~/L2/Projet/Personnel/IA/medicinal-plant-classifier
+       ```
+     - Crée et active un environnement virtuel :
+       ```bash
+       python3 -m venv venv
+       source venv/bin/activate
+       ```
+  2. **Installe les dépendances** :
+     - Vérifie `requirements.txt`. Il devrait contenir :
+       ```
+       flask==3.0.0
+       pandas==2.0.3
+       numpy==1.24.3
+       scikit-learn==1.5.0
+       matplotlib==3.7.1
+       ```
+     - Installe :
+       ```bash
+       pip install -r requirements.txt
+       ```
+  3. **Teste l’application** :
+     - Lance l’application Flask :
+       ```bash
+       python app.py
+       ```
+     - Ouvre `http://localhost:5000` dans ton navigateur.
+     - Entre les caractéristiques d’une plante (ex. : `leaf_type=simple`, `habitat=forest`, `flower_color=white`, `height=30`) et vérifie si le résultat est “Médicinale”.
+
+- **Suivi dans `devbook.md`** :
+  - Modifie `devbook.md` :
+    ```bash
+    sed -i 's/- \[ \] Installer les dépendances et tester l’application/- \[x\] Installer les dépendances et tester l’application/' devbook.md
+    git add devbook.md
+    git commit -m "Étape 4 réalisée : Installation des dépendances et test de l’application"
+    ```
+
+
