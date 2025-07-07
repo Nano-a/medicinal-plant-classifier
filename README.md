@@ -21,6 +21,29 @@ Medicinal Plant Classifier est une application web qui prédit si une plante est
 
 ---
 
+## 🖼️ Galerie du Projet
+
+### Interface Utilisateur
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 15px; margin: 20px 0;">
+  <img src="Photo%20Presentation/1.png" alt="Page d'accueil - Sélection de film" style="width: 48%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+  <img src="Photo%20Presentation/2.png" alt="Résultats de recommandation" style="width: 48%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+</div>
+
+### Fonctionnalités Avancées
+<div align="center" style="margin: 20px 0;">
+  <img src="Photo%20Presentation/3.png" alt="Analyse des données - Graphique des genres" style="width: 65%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+</div>
+
+### Détails Techniques
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 15px; margin: 20px 0;">
+  <img src="Photo%20Presentation/4.png" alt="Architecture du système" style="width: 48%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+  <img src="Photo%20Presentation/5.png" alt="Performance du modèle" style="width: 48%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+</div>
+
+*Captures d'écran montrant les différentes facettes du système de recommandation*
+
+---
+
 ## 🗂️ Structure du projet
 ```
 Medicinal Plant Classifier/
